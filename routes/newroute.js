@@ -1,10 +1,12 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var db = require('../models/model');
-//var cors = require('cors')
+var cors = require('cors')
 const multer = require('multer');
 //const path = require('path')
 var router = express.Router();
+const path = require('path')
+
 
 
 var storage = multer.diskStorage({
@@ -51,12 +53,12 @@ router.get("/", async (req, res) => {
     // console.log(req.body);
     console.log("file",req.file);
     console.log(req.image);
-    const {slug,password,content,image} = req.body;
+    const {Title,Password,Content} = req.body;
    // try {
       const dbsv = new db({
-       slug:slug,
-       password:password,
-       content:content,
+       slug:Title,
+       password:Password,
+       content:Content,
        image:req.file.path,
       });
       
